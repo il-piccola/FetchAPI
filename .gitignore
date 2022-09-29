@@ -1,0 +1,3 @@
+db.sqlite3
+FetchAPI/__pycache__/
+FetchAPI/migrations/__pycache__/
