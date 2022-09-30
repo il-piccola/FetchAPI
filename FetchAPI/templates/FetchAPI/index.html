@@ -9,5 +9,13 @@
     </head>
     <body>
         <h1>{{ title }}</h1>
+        <button onClick="img1();" class="btn btn-primary mb-3">画像を表示</button>
+        <div id="img"></div>
+    <script>
+        function img1() {
+            url = "{% url 'img' %}"
+            showImage(url)
+        }
+    </script>
     </body>
 </html>
