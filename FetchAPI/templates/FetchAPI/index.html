@@ -9,13 +9,12 @@
     </head>
     <body>
         <h1>{{ title }}</h1>
-        <button onClick="img1();" class="btn btn-primary mb-3">画像を表示</button>
-        <div id="img"></div>
+        <button id="button" onClick="img();" class="btn btn-primary mb-3">画像生成開始</button>
+        <div id="container">
+            <div id="img1"></div><div id="img2"></div><div id="img3"></div>
+        </div>
     <script>
-        function img1() {
-            url = "{% url 'img' %}"
-            showImage(url)
-        }
+        function img() {showImage("{% url 'img' %}");}
     </script>
     </body>
 </html>

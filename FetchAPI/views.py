@@ -1,5 +1,6 @@
 import mimetypes
 import os
+import time
 from subprocess import Popen, PIPE
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -14,6 +15,7 @@ def index(request) :
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request) :
+    time.sleep(5)
     imgpath = os.path.join(STATIC_URL, 'profile01.JPG')
     binary = open(imgpath, "rb").read()
     return HttpResponse(binary, content_type='image/jpeg')
