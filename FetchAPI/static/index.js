@@ -10,7 +10,7 @@ function showImage(url, n) {
             const fileUrl = URL.createObjectURL(blobResponse);
             document.querySelector('#button').disabled = false;
             document.querySelector('#button').innerHTML = '画像生成開始'
-            document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
+            document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=400 height=300 />`;
         })
     })
 }

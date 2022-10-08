@@ -14,8 +14,9 @@ def index(request) :
     }
     return render(request, 'FetchAPI/index.html', params)
 
-def img(request) :
+def img(request, n) :
     time.sleep(5)
-    imgpath = os.path.join(STATIC_URL, 'profile01.JPG')
+    imgfile = 'image{:02}.PNG'.format(n)
+    imgpath = os.path.join(STATIC_URL, imgfile)
     binary = open(imgpath, "rb").read()
-    return HttpResponse(binary, content_type='image/jpeg')
+    return HttpResponse(binary, content_type='image/png')
