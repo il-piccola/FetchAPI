@@ -21,10 +21,9 @@ def index(request) :
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request, n) :
-    # time.sleep(5)
     imgpath = os.path.join(IMGDIR, IMGLIST[n])
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5)["sample"][0]
         image.save(imgpath)
-        binary = open(imgpath, "rb").read()
-        return HttpResponse(binary, content_type='image/png')
+    binary = open(imgpath, "rb").read()
+    return HttpResponse(binary, content_type='image/png')
