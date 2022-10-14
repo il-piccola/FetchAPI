@@ -1,4 +1,5 @@
 import os
+import time
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -26,5 +27,6 @@ def img(request, n) :
         image = pipe(SENTENSE, guidance_scale=7.5)["sample"][0]
         image.save(imgpath)
         print(imgpath)
+    time.sleep(5)
     binary = open(imgpath, "rb").read()
     return HttpResponse(binary, content_type='image/png')
