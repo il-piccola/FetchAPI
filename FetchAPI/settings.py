@@ -127,3 +127,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MODEL_ID = "rinna/japanese-stable-diffusion"
+DEVICE = "cuda"
+
+IMGLIST = ["output01.png", "output02.png", "output03.png"]
+IMGDIR = os.path.join(Path(__file__).resolve().parent, 'static')
+
+SENTENSE = "人工知能が見る夢"
