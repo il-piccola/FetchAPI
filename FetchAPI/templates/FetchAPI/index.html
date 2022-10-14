@@ -20,8 +20,8 @@
     <script>
         function img() {
             showImage("{% url 'img' 0 %}", 0);
-            showImage("{% url 'img' 1 %}", 1);
-            showImage("{% url 'img' 2 %}", 2);
+            {% comment %} showImage("{% url 'img' 1 %}", 1); {% endcomment %}
+            {% comment %} showImage("{% url 'img' 2 %}", 2); {% endcomment %}
         }
     </script>
     </body>
