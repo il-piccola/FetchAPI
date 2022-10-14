@@ -23,10 +23,12 @@ def img(request, n) :
     pipe = pipe.to(DEVICE)
 
     imgpath = os.path.join(IMGDIR, IMGLIST[n])
+    if os.path.exists(imgpath) :
+        os.remove(imgpath)
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5)["sample"][0]
         image.save(imgpath)
-        print(imgpath)
-    time.sleep(5)
+    while not os.path.exists(imgpath) :
+        time.sleep(1)
     binary = open(imgpath, "rb").read()
     return HttpResponse(binary, content_type='image/png')
