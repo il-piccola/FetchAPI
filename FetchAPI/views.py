@@ -28,7 +28,9 @@ def img(request, n) :
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5)["sample"][0]
         image.save(imgpath)
-    while not os.path.exists(imgpath) :
+    while True :
         time.sleep(1)
+        if os.path.exists(imgpath) :
+            break
     binary = open(imgpath, "rb").read()
     return HttpResponse(binary, content_type='image/png')
