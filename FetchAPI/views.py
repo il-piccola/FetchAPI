@@ -1,4 +1,5 @@
 import os
+import io
 import time
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -27,10 +28,13 @@ def img(request, n) :
         os.remove(imgpath)
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5).images[0]
-        image.save(imgpath)
-    while True :
-        time.sleep(1)
-        if os.path.exists(imgpath) :
-            break
-    binary = open(imgpath, "rb").read()
+        binary = io.BytesIO()
+        # image.save(imgpath)
+        image.save(binary, format="PNG")
+        binary.seek(0)
+    # while True :
+    #     time.sleep(1)
+    #     if os.path.exists(imgpath) :
+    #         break
+    # binary = open(imgpath, "rb").read()
     return HttpResponse(binary, content_type='image/png')
