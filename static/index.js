@@ -5,8 +5,8 @@ function showImage(url, n) {
     document.querySelector('#button').disabled = true;
     document.querySelector('#button').innerHTML = buttonHTML;
     document.querySelector(tag).innerHTML = spinnerHTML;
-    fetch(url).then(response => {
-        response.blob().then(blobResponse => {
+    await fetch(url).then(response => {
+        await response.blob().then(blobResponse => {
             const fileUrl = URL.createObjectURL(blobResponse);
             document.querySelector('#button').disabled = false;
             document.querySelector('#button').innerHTML = '画像生成開始'
