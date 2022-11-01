@@ -5,7 +5,7 @@ function showImage(url, n) {
     document.querySelector('#button').disabled = true;
     document.querySelector('#button').innerHTML = buttonHTML;
     document.querySelector(tag).innerHTML = spinnerHTML;
-    await fetch(url).then(response => {
+    fetch(url).then(response => {
         await response.blob().then(blobResponse => {
             const fileUrl = URL.createObjectURL(blobResponse);
             document.querySelector('#button').disabled = false;
