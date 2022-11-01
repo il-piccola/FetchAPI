@@ -26,7 +26,7 @@ def img(request, n) :
     if os.path.exists(imgpath) :
         os.remove(imgpath)
     with autocast(DEVICE):
-        image = pipe(SENTENSE, guidance_scale=7.5)["sample"][0]
+        image = pipe(SENTENSE, guidance_scale=7.5)[0]
         image.save(imgpath)
     while True :
         time.sleep(1)
