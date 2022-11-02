@@ -14,7 +14,7 @@ const showImage = async(url, n) => {
     try {
         const response = await fetch(url);
         const blobResponse = await response.blob();
-        if (response.status == 200) {
+        if (response.ok) {
             const fileUrl = URL.createObjectURL(blobResponse);
             document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
         } else {
