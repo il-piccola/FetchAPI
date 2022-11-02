@@ -18,7 +18,7 @@ const showImage = async(url, n) => {
             const fileUrl = URL.createObjectURL(blobResponse);
             document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
         } else {
-            document.querySelector(tag).innerHTML = `response status = '${response.status}'`;
+            document.querySelector(tag).innerHTML = `response status = '${response.status}'['${response.statusText}']`;
         }
     } catch(e) {
         document.querySelector(tag).innerHTML = `error = '${e.message}'`;
