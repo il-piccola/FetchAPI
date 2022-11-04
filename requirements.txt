@@ -1,5 +1,6 @@
 django
 torch
 diffusers
+accelerate
 transformers
 git+https://github.com/rinnakk/japanese-stable-diffusion
