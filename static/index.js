@@ -12,7 +12,7 @@ const showImage = async(url, n) => {
     switchButton(false);
     for (i==0; i<n; i++) {
         const tag = '#img' + i;
-        const url_i = url + i + '/'
+        const url_i = url.slice(0, url.length-2) + i + '/'
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
             const response = await fetch(url_i);
