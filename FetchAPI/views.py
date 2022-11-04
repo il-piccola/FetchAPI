@@ -1,6 +1,5 @@
 import os
 import io
-import time
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -19,22 +18,10 @@ def index(request) :
 
 def img(request, n) :
     scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
-    pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=torch.float16, scheduler=scheduler, use_auth_token=os.environ['HF_TOKEN'])
-    # pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=torch.float16, scheduler=scheduler, use_auth_token="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")
-    pipe = pipe.to(DEVICE)
-
-    imgpath = os.path.join(IMGDIR, IMGLIST[n])
-    if os.path.exists(imgpath) :
-        os.remove(imgpath)
+    pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=torch.float16, scheduler=scheduler, use_auth_token=os.environ['HF_TOKEN']).to(DEVICE)
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5).images[0]
         binary = io.BytesIO()
         image.save(binary, format="PNG")
         binary.seek(0)
-        image.save(imgpath)
         return HttpResponse(binary, content_type='image/png')
-    # while True :
-    #     time.sleep(1)
-    #     if os.path.exists(imgpath) :
-    #         break
-    # binary = open(imgpath, "rb").read()
