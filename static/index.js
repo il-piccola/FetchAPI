@@ -8,27 +8,26 @@ function switchButton(disabled) {
     }
 }
 const showImage = async(url, n) => {
-    const tag = '#img' + n;
     const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px;" role="status"><span class="visually-hidden">Loading...</span></div>';
-    document.querySelector(tag).innerHTML = spinnerHTML;
-    try {
-        const response = await fetch(url);
-        const blobResponse = await response.blob();
-        if (response.ok) {
-            const fileUrl = URL.createObjectURL(blobResponse);
-            document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
-        } else {
-            document.querySelector(tag).innerHTML = `response status = '${response.status}' '${response.statusText}'`;
-        }
-    } catch(e) {
-        document.querySelector(tag).innerHTML = `error = '${e.message}'`;
-    }
     switchButton(false);
-    // fetch(url).then(response => {
-    //     response.blob().then(blobResponse => {
-    //         const fileUrl = URL.createObjectURL(blobResponse);
-    //         document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
-    //         switchButton(false);
-    //     })
-    // })
+    for (i==0; i<n; i++) {
+        const tag = '#img' + i;
+        const url_i = url + i + '/'
+        document.querySelector(tag).innerHTML = spinnerHTML;
+        try {
+            const response = await fetch(url_i);
+            const blobResponse = await response.blob();
+            if (response.ok) {
+                const fileUrl = URL.createObjectURL(blobResponse);
+                document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
+                if (i == n-1) {
+                    switchButton(true);
+                }
+            } else {
+                document.querySelector(tag).innerHTML = `response status = '${response.status}' '${response.statusText}'`;
+            }
+        } catch(e) {
+            document.querySelector(tag).innerHTML = `error = '${e.message}'`;
+        }
+    }
 }
