@@ -11,13 +11,13 @@ const showImage = async(url, n) => {
     const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px;" role="status"><span class="visually-hidden">Loading...</span></div>';
     switchButton(true);
     for (let i=0; i<n; i++) {
-        tag = '#img' + i;
+        let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            response = await fetch(url);
-            blobResponse = await response.blob();
+            let response = await fetch(url);
+            let blobResponse = await response.blob();
             if (response.ok) {
-                fileUrl = URL.createObjectURL(blobResponse);
+                let fileUrl = URL.createObjectURL(blobResponse);
                 document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
                 if (i == n-1) {
                     switchButton(false);
