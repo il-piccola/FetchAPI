@@ -12,11 +12,9 @@ const showImage = async(url, n) => {
     switchButton(false);
     for (i==0; i<n; i++) {
         const tag = '#img' + i;
-        const url_i = url.slice(0, url.length-2) + i + '/'
-        console.log(url_i)
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            const response = await fetch(url_i);
+            const response = await fetch(url);
             const blobResponse = await response.blob();
             if (response.ok) {
                 const fileUrl = URL.createObjectURL(blobResponse);
