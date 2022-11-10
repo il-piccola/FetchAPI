@@ -10,14 +10,14 @@ function switchButton(disabled) {
 const showImage = async(url, n) => {
     const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px;" role="status"><span class="visually-hidden">Loading...</span></div>';
     switchButton(true);
-    for (i=0; i<n; i++) {
-        const tag = '#img' + i;
+    for (let i=0; i<n; i++) {
+        tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            const response = await fetch(url);
-            const blobResponse = await response.blob();
+            response = await fetch(url);
+            blobResponse = await response.blob();
             if (response.ok) {
-                const fileUrl = URL.createObjectURL(blobResponse);
+                fileUrl = URL.createObjectURL(blobResponse);
                 document.querySelector(tag).innerHTML = `<img src='${fileUrl}' width=300 height=300 />`;
                 if (i == n-1) {
                     switchButton(false);
