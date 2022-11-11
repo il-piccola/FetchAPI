@@ -12,6 +12,10 @@ const showImage = async(url, n) => {
     switchButton(true);
     for (let i=0; i<n; i++) {
         let tag = '#img' + i;
+        document.querySelector(tag).innerHTML = ''
+    }
+    for (let i=0; i<n; i++) {
+        let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
             let response = await fetch(url);
