@@ -9,6 +9,9 @@ from diffusers import LMSDiscreteScheduler
 from japanese_stable_diffusion import JapaneseStableDiffusionPipeline
 from .settings import *
 
+scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
+pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=torch.float16, scheduler=scheduler, use_auth_token=os.environ['HF_TOKEN']).to(DEVICE)
+
 @csrf_exempt
 def index(request) :
     params = {
@@ -17,8 +20,6 @@ def index(request) :
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request) :
-    scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
-    pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=torch.float16, scheduler=scheduler, use_auth_token=os.environ['HF_TOKEN']).to(DEVICE)
     with autocast(DEVICE):
         image = pipe(SENTENSE, guidance_scale=7.5).images[0]
         binary = io.BytesIO()
