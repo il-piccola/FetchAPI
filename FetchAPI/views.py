@@ -25,9 +25,9 @@ def index(request) :
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request) :
-    print('session = ', request.POST['sentence'])
+    print('GET = ', request.GET['sentence'])
     with autocast(DEVICE):
-        image = pipe(request.POST['sentence'], guidance_scale=7.5).images[0]
+        image = pipe(request.GET['sentence'], guidance_scale=7.5).images[0]
         binary = io.BytesIO()
         image.save(binary, format="PNG")
         binary.seek(0)

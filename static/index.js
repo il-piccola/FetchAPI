@@ -20,12 +20,9 @@ const showImage = async(url, n, sentence) => {
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
             let response = await fetch(url, {
-                method: 'POST',
+                method: 'GET',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
-                body: `sentence='${sentence}'`,
-                xsrfCookieName: 'csrftoken',
-                xsrfHeaderName: 'X-CSRFTOKEN',
-                withCredentials: true
+                body: `sentence='${sentence}'`
             });
             let blobResponse = await response.blob();
             if (response.ok) {
