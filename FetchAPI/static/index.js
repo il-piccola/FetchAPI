@@ -19,7 +19,7 @@ const showImage = async(url, n) => {
         let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            let response = await fetch(url);
+            let response = await fetch(url, {method: 'GET', credentials: "include"});
             let blobResponse = await response.blob();
             if (response.ok) {
                 let fileUrl = URL.createObjectURL(blobResponse);
