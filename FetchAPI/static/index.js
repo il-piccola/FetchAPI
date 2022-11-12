@@ -22,7 +22,10 @@ const showImage = async(url, n, sentence) => {
             let response = await fetch(url, {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
-                body: `sentence='${sentence}'`
+                body: `sentence='${sentence}'`,
+                xsrfCookieName: 'csrftoken',
+                xsrfHeaderName: 'X-CSRFTOKEN',
+                withCredentials: true
             });
             let blobResponse = await response.blob();
             if (response.ok) {
