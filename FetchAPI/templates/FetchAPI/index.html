@@ -22,15 +22,17 @@
         </form>
         <div id="container">
             <div class="row">
+                {% if num %}
                 {% with ''|center:num as range %}
                 {% for _ in range %}
                     <div class="col" id="img{{ forloop.counter0 }}"></div>
                 {% endfor %}
                 {% endwith %}
+                {% endif %}
             </div>
         </div>
     <script>
-        {% if sentence %}
+        {% if num %}
         showImage("{% url 'img' %}", {{ num }});
         {% endif %}
     </script>
