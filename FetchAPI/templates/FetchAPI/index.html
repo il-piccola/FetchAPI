@@ -9,18 +9,30 @@
     </head>
     <body>
         <h1>{{ title }}</h1>
-        <button id="button" onClick="img();" class="btn btn-primary mb-3">画像生成開始</button>
+        <form action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-10">
+                    <input type="text" class="form-control" value="{{ sentence }}" placeholder="日本語の文" id="sentence" name="sentence">
+                </div>
+                <div class="col-2">
+                    <button type="submit" id="button" class="btn btn-primary mb-3">画像生成開始</button>
+                </div>
+            </div>
+        </form>
         <div id="container">
-            <div class="row row-cols-3">
-                <div class="col" id="img0"></div>
-                <div class="col" id="img1"></div>
-                <div class="col" id="img2"></div>
+            <div class="row">
+                {% with ''|center:num as range %}
+                {% for _ in range %}
+                    <div class="col" id="img{{ forloop.counter0 }}"></div>
+                {% endfor %}
+                {% endwith %}
             </div>
         </div>
     <script>
-        function img() {
-            showImage("{% url 'img' %}", 3);
-        }
+        {% if sentence %}
+        showImage("{% url 'img' %}", {{ num }});
+        {% endif %}
     </script>
     </body>
 </html>

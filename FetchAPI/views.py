@@ -17,11 +17,15 @@ def index(request) :
     params = {
         'title' : 'FetchAPI Test',
     }
+    if request.POST :
+        request.session['sentence'] = request.POST['sentence']
+        params['sentence'] = request.POST['sentence']
+        params['num'] = 3
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request) :
     with autocast(DEVICE):
-        image = pipe(SENTENSE, guidance_scale=7.5).images[0]
+        image = pipe(request.session['sentence'], guidance_scale=7.5).images[0]
         binary = io.BytesIO()
         image.save(binary, format="PNG")
         binary.seek(0)
