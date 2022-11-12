@@ -21,9 +21,11 @@ def index(request) :
         request.session['sentence'] = request.POST['sentence']
         params['sentence'] = request.POST['sentence']
         params['num'] = 3
+        print('session = ', request.session['sentence'])
     return render(request, 'FetchAPI/index.html', params)
 
 def img(request) :
+    print('session = ', request.session['sentence'])
     with autocast(DEVICE):
         image = pipe(request.session['sentence'], guidance_scale=7.5).images[0]
         binary = io.BytesIO()
