@@ -19,11 +19,7 @@ const showImage = async(url, n, sentence) => {
         let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            let response = await fetch(url, {
-                method: 'GET',
-                headers: {'Content-Type':'application/x-www-form-urlencoded'},
-                body: `sentence='${sentence}'`
-            });
+            let response = await fetch(url);
             let blobResponse = await response.blob();
             if (response.ok) {
                 let fileUrl = URL.createObjectURL(blobResponse);
