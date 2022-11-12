@@ -8,7 +8,7 @@ function switchButton(disabled) {
         document.querySelector('#button').innerHTML = '画像生成開始';
     }
 }
-const showImage = async(url, n) => {
+const showImage = async(url, n, sentence) => {
     const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px;" role="status"><span class="visually-hidden">Loading...</span></div>';
     switchButton(true);
     for (let i=0; i<n; i++) {
@@ -19,7 +19,11 @@ const showImage = async(url, n) => {
         let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
         try {
-            let response = await fetch(url, {method: 'GET', credentials: "include"});
+            let response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded'},
+                body: `sentence='${sentence}'`
+            });
             let blobResponse = await response.blob();
             if (response.ok) {
                 let fileUrl = URL.createObjectURL(blobResponse);

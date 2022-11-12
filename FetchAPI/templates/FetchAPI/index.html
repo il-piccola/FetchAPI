@@ -33,7 +33,7 @@
         </div>
     <script>
         {% if num %}
-        showImage("{% url 'img' %}", {{ num }});
+        showImage("{% url 'img' %}", {{ num }}, "{{ sentence }}");
         {% endif %}
     </script>
     </body>
