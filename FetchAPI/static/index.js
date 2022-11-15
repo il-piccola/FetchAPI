@@ -1,3 +1,14 @@
+const getCookie = (name) => {
+    if (document.cookie && document.cookie !== '') {
+        for (const cookie of document.cookie.split(';')) {
+        const [key, value] = cookie.trim().split('=')
+            if (key === name) {
+                return decodeURIComponent(value)
+            }
+        }
+    }
+}
+const csrftoken = getCookie('csrftoken')
 function switchButton(disabled) {
     document.querySelector('#button').disabled = disabled;
     document.querySelector('#sentence').disabled = disabled;
@@ -18,8 +29,17 @@ const showImage = async(url, n, sentence) => {
     for (let i=0; i<n; i++) {
         let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
+        const body = new URLSearchParams();
+        body.append('sentence', sentence);
         try {
-            let response = await fetch(url);
+            let response = await fetch(url, {
+                method: 'POST',
+                body: body,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                    'X-CSRFToken': csrftoken,
+                }
+            });
             let blobResponse = await response.blob();
             if (response.ok) {
                 let fileUrl = URL.createObjectURL(blobResponse);
