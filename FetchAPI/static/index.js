@@ -1,13 +1,13 @@
-const getCookie = (name) => {
-    if (document.cookie && document.cookie !== '') {
-        for (const cookie of document.cookie.split(';')) {
-        const [key, value] = cookie.trim().split('=')
-            if (key === name) {
-                return decodeURIComponent(value)
-            }
-        }
-    }
-}
+// const getCookie = (name) => {
+//     if (document.cookie && document.cookie !== '') {
+//         for (const cookie of document.cookie.split(';')) {
+//         const [key, value] = cookie.trim().split('=')
+//             if (key === name) {
+//                 return decodeURIComponent(value)
+//             }
+//         }
+//     }
+// }
 function switchButton(disabled) {
     document.querySelector('#button').disabled = disabled;
     document.querySelector('#sentence').disabled = disabled;
@@ -34,10 +34,10 @@ const showImage = async(url, n, sentence) => {
             let response = await fetch(url, {
                 method: 'POST',
                 body: body,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                    'X-CSRFToken': getCookie('csrftoken'),
-                }
+                // headers: {
+                //     'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                //     'X-CSRFToken': getCookie('csrftoken'),
+                // }
             });
             let blobResponse = await response.blob();
             if (response.ok) {
