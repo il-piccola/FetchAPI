@@ -18,15 +18,15 @@ def index(request) :
         'title' : 'FetchAPI Test',
     }
     if request.POST :
-        request.session['sentence'] = request.POST['sentence']
+        # request.session['sentence'] = request.POST['sentence']
         params['sentence'] = request.POST['sentence']
         params['num'] = 3
-        print('session = ', request.session['sentence'])
+        # print('session = ', request.session['sentence'])
     return render(request, 'FetchAPI/index.html', params)
 
 @csrf_exempt
 def img(request) :
-    print('session = ', request.session['sentence'])
+    # print('session = ', request.session['sentence'])
     with autocast(DEVICE):
         image = pipe(request.POST['sentence'], guidance_scale=7.5).images[0]
         binary = io.BytesIO()
