@@ -18,6 +18,7 @@ def index(request) :
         'title' : 'FetchAPI Test',
     }
     if request.POST :
+        request.session['sentence'] = request.POST['sentence']
         params['sentence'] = request.POST['sentence']
         params['num'] = 3
         print('session = ', request.session['sentence'])
