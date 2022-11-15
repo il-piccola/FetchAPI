@@ -24,6 +24,7 @@ def index(request) :
         print('session = ', request.session['sentence'])
     return render(request, 'FetchAPI/index.html', params)
 
+@csrf_exempt
 def img(request) :
     print('POST = ', request.POST['sentence'])
     with autocast(DEVICE):
