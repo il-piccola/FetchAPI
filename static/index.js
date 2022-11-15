@@ -8,7 +8,6 @@ const getCookie = (name) => {
         }
     }
 }
-const csrftoken = getCookie('csrftoken')
 function switchButton(disabled) {
     document.querySelector('#button').disabled = disabled;
     document.querySelector('#sentence').disabled = disabled;
@@ -29,7 +28,7 @@ const showImage = async(url, n, sentence) => {
     for (let i=0; i<n; i++) {
         let tag = '#img' + i;
         document.querySelector(tag).innerHTML = spinnerHTML;
-        const body = new URLSearchParams();
+        let body = new URLSearchParams();
         body.append('sentence', sentence);
         try {
             let response = await fetch(url, {
@@ -37,7 +36,7 @@ const showImage = async(url, n, sentence) => {
                 body: body,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                    'X-CSRFToken': csrftoken,
+                    'X-CSRFToken': getCookie('csrftoken'),
                 }
             });
             let blobResponse = await response.blob();
