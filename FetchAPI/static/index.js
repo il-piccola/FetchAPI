@@ -11,6 +11,7 @@
 function switchButton(disabled) {
     document.querySelector('#button').disabled = disabled;
     document.querySelector('#sentence').disabled = disabled;
+    document.querySelector('#num').disabled = disabled;
     if (disabled == true) {
         const buttonHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>画像生成中…';
         document.querySelector('#button').innerHTML = buttonHTML;
