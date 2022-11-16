@@ -20,7 +20,7 @@
                         {% with ''|center:9 as range %}
                         {% for _ in range %}
                         {% if num %}
-                            {% if num == forloop.counter %}
+                            {% if forloop.counter|stringformat:"s" == num|stringformat:"s" %}
                                 <option value="{{ forloop.counter }}" selected>{{ forloop.counter }}</option>
                             {% else %}
                                 <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
