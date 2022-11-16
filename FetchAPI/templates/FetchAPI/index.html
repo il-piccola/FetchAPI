@@ -16,16 +16,16 @@
                     <input type="text" class="form-control" value="{{ sentence }}" placeholder="日本語の文" id="sentence" name="sentence">
                 </div>
                 <div class="col-1">
-                    <select class="form-select" id="num" name="num" value="{{ num }}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                    <select class="form-select" id="num" name="num">
+                        {% with ''|center:9 as range %}
+                        {% for _ in range %}
+                        {% if num and num == forloop.counter %}
+                            <option value="{{ forloop.counter }}" selected>{{ forloop.counter }}</option>
+                        {% else %}
+                            <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
                     </select>
                 </div>
                 <div class="col-2">
