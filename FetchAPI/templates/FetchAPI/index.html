@@ -44,7 +44,7 @@
             {% if forloop.counter0|divisibleby:"4" or forloop.first %}
                 <div class="row my-5">
             {% endif %}
-            <div class="col" id="img{{ forloop.counter0 }}"></div>
+            <div class="col d-flex align-items-center justify-content-center" id="img{{ forloop.counter0 }}"></div>
             {% if forloop.counter|divisibleby:"4" or forloop.last %}
                 </div>
             {% endif %}
