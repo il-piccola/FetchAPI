@@ -37,21 +37,23 @@
                 </div>
             </div>
         </form>
-        <div id="container">
-            <div class="row my-5">
-                {% if num %}
-                {% with ''|center:num as range %}
-                {% for _ in range %}
-                    <div class="col" id="img{{ forloop.counter0 }}"></div>
-                {% endfor %}
-                {% endwith %}
-                {% endif %}
-            </div>
-        </div>
-    <script>
         {% if num %}
-        showImage("{% url 'img' %}", {{ num }}, "{{ sentence }}");
+        <div id="container">
+            {% with ''|center:num as range %}
+            {% for _ in range %}
+            {% if forloop.counter0|divisibleby:"4" or forloop.first %}
+                <div class="row my-5">
+            {% endif %}
+            <div class="col" id="img{{ forloop.counter0 }}"></div>
+            {% if forloop.counter|divisibleby:"4" or forloop.last %}
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </div>
+        <script>
+            showImage("{% url 'img' %}", {{ num }}, "{{ sentence }}");
+        </script>
         {% endif %}
-    </script>
-    </body>
+</body>
 </html>
