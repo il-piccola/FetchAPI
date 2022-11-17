@@ -35,17 +35,17 @@ a {
 /* ヘッダー */
 header {
     position: relative;
-    padding: 5% 0;
-    min-height: 70vh;
-    background: url('image.jpg') center/cover;
+    padding: 0;
+    /* min-height: 70vh; */
+    /* background: url('image.jpg') center/cover; */
     color: #000;
 }
 
 /* ヘッダー枠線 */
 #headerline {
     margin: 0 auto;
-    width: 90%;
-    height: 80vh;
+    width: auto;
+    height: auto;
     border: thin solid #000;
 }
 
