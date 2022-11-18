@@ -36,7 +36,6 @@ a {
 header {
     position: relative;
     padding: 0;
-    min-height: 70vh;
     /* background: url('image.jpg') center/cover; */
     color: #000;
 }
@@ -46,6 +45,7 @@ header {
     margin: 5% auto;
     width: auto;
     /* height: auto; */
+    min-height: 70vh;
     border: thin solid #000;
 }
 
