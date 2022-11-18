@@ -20,7 +20,9 @@ def index(request) :
     if request.POST :
         # request.session['sentence'] = request.POST['sentence']
         params['sentence'] = request.POST['sentence']
-        params['num'] = request.POST['num']
+        num = request.POST['num']
+        params['num'] = num
+        params['height'] = (num + 1) * 300
         # print('session = ', request.session['sentence'])
     return render(request, 'FetchAPI/index.html', params)
 

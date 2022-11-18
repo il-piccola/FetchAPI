@@ -11,7 +11,11 @@
     </head>
     <body>
 	    <header id="Top">
-        <div id="headerline">
+        {% if height %}
+            <div id="headerline" style="height:{{ height }}px;">
+        {% else %}
+            <div id="headerline">
+        {% endif %}
         <h1>{{ title }}</h1>
         <div class="container boxlink">
         <form action="{% url 'index' %}" method="POST">
