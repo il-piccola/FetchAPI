@@ -16,11 +16,11 @@
         {% else %}
         <div id="headerline d-flex align-content-start">
         {% endif %}
-        <h1>{{ title }}</h1>
         <div class="container boxlink">
-        <form action="{% url 'index' %}" method="POST">
+        <div class="row"><div class="col"><h1>{{ title }}</h1></div></div>
+        <div class="row">
+            <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}
-            <div class="row">
                 <div class="col-9">
                     <input type="text" class="form-control" value="{{ sentence }}" placeholder="日本語の文" id="sentence" name="sentence">
                 </div>
@@ -44,8 +44,8 @@
                 <div class="col-2">
                     <button type="submit" id="button" class="btn btn-primary mb-3">画像生成開始</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         {% if num and sentence %}
         <div id="container">
             {% with ''|center:num as range %}
