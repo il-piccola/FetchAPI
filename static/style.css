@@ -45,7 +45,7 @@ header {
 #headerline {
     margin: 5% auto;
     width: auto;
-    height: auto;
+    /* height: auto; */
     border: thin solid #000;
 }
 
