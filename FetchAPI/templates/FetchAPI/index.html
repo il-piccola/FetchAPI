@@ -17,8 +17,8 @@
         <div id="headerline d-flex align-content-start">
         {% endif %}
         <div class="boxlink d-flex flex-column">
-        <div class="row d-flex flex-row"><div class="col"><h1>{{ title }}</h1></div></div>
-        <div class="row d-flex flex-row">
+        <h1>{{ title }}</h1>
+        <div class="d-flex flex-row">
             <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}
                 <div class="col-9">
