@@ -44,7 +44,6 @@ header {
 #headerline {
     margin: 5% auto;
     min-width: 90%;
-    /* height: auto; */
     min-height: 70vh;
     border: thin solid #000;
 }
@@ -60,6 +59,7 @@ header h1 {
     /* font-size: 1em; */
     /* animation-name: SlideIn; */
     /* animation-duration: 1s; */
+    min-width: 1200px;
 }
 
 header h1,
