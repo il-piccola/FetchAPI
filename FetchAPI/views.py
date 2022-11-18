@@ -1,5 +1,6 @@
 import os
 import io
+import math
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -22,7 +23,7 @@ def index(request) :
         params['sentence'] = request.POST['sentence']
         num = int(request.POST['num'])
         params['num'] = num
-        params['height'] = ((num // 4) + 1) * 300
+        params['height'] = (math.ceil(num / 4) + 1) * 300
         # print('session = ', request.session['sentence'])
     return render(request, 'FetchAPI/index.html', params)
 
