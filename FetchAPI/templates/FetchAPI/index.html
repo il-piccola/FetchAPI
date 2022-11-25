@@ -46,7 +46,7 @@
             </div>
         </form>
         {% if num and sentence %}
-        <div id="container">
+        <div class="container" style="position:absolute;top:150px;left:100px;">
             {% with ''|center:num as range %}
             {% for _ in range %}
             {% if forloop.counter0|divisibleby:"4" or forloop.first %}
