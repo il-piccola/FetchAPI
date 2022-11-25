@@ -14,12 +14,12 @@
         {% comment %} {% if height %}
         <div id="headerline" style="height:{{ height }}px;">
         {% else %} {% endcomment %}
-        <div id="headerline">
+        <div id="headerline" class="container">
         {% comment %} {% endif %} {% endcomment %}
-        <h1 style="position:absolute;top:60px;left:100px;">{{ title }}</h1>
+        <div class="row"><h1>{{ title }}</h1></div>
         <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}
-            <div class="d-flex flex-row" style="position:absolute;top:120px;left:100px;min-width:90%;">
+            <div class="row d-flex flex-row">
                 <div class="col-9" style="padding:0 2px;">
                     <input type="text" class="form-control" value="{{ sentence }}" placeholder="日本語の文" id="sentence" name="sentence">
                 </div>
@@ -46,7 +46,7 @@
             </div>
         </form>
         {% if num and sentence %}
-        <div class="container" style="position:absolute;top:150px;left:100px;">
+        <div class="row container">
             {% with ''|center:num as range %}
             {% for _ in range %}
             {% if forloop.counter0|divisibleby:"4" or forloop.first %}
