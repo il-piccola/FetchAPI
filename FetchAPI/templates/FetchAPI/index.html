@@ -11,11 +11,11 @@
     </head>
     <body>
 	    <header id="Top">
-        {% if height %}
+        {% comment %} {% if height %}
         <div id="headerline" style="height:{{ height }}px;">
-        {% else %}
+        {% else %} {% endcomment %}
         <div id="headerline">
-        {% endif %}
+        {% comment %} {% endif %} {% endcomment %}
         <h1 style="position:absolute;top:60px;left:100px;">{{ title }}</h1>
         <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}
@@ -63,8 +63,7 @@
             showImage("{% url 'img' %}", {{ num }}, "{{ sentence }}");
         </script>
         {% endif %}
-    </div>
-    </div>
-    </header>
+        </div>
+        </header>
     </body>
 </html>
