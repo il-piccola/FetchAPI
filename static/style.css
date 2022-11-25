@@ -42,7 +42,7 @@ header {
 
 /* ヘッダー枠線 */
 #headerline {
-    margin: 5% auto;
+    margin: 50px 10px 3% 10px;
     min-width: 90%;
     min-height: 70vh;
     border: thin solid #000;
