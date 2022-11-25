@@ -42,9 +42,11 @@ header {
 
 /* ヘッダー枠線 */
 #headerline {
+	overflow-x: hidden;
+	overflow-y: auto;
     margin: 50px 10px 3% 10px;
     min-width: 90%;
-    min-height: 70vh;
+    min-height: 80vh;
     border: thin solid #000;
 }
 
