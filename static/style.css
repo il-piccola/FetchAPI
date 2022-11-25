@@ -34,7 +34,7 @@ a {
 
 /* ヘッダー */
 header {
-    position: relative;
+    /*position: relative;*/
     padding: 0;
     /* background: url('image.jpg') center/cover; */
     color: #000;
@@ -49,10 +49,7 @@ header {
 }
 
 /* ヘッダー見出し */
-header h1 {
-    position: absolute;
-    top: 10%;
-    left: 10%;
+h1 {
     padding: 0;
     letter-spacing: 0em;
     border-bottom: thin solid #000;
@@ -62,14 +59,14 @@ header h1 {
     min-width: 1200px;
 }
 
-header h1,
+h1,
 section h2 {
     text-shadow: 1px 1px 2px #666;
     font-family: 'Major Mono Display', 'Noto Serif JP', serif;
 }
 
 /* ヘッダー内リンク */
-header .boxlink {
+boxlink {
     position: absolute;
     top: 25%;
     left: 10%;
@@ -81,9 +78,10 @@ header .boxlink {
     color: #000;
     /* animation-name: FadeIn; */
     /* animation-duration: 2s; */
+    width: 90%;
 }
 
-header .boxlink:hover {
+boxlink:hover {
     background-color: transparent;
 }
 
