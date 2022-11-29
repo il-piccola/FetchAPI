@@ -45,7 +45,7 @@ header {
 	overflow-x: hidden;
 	overflow-y: auto;
     margin: 50px 10px 3% 10px;
-    min-width: 90%;
+    min-width: 98%;
     min-height: 80vh;
     border: thin solid #000;
 }
@@ -80,7 +80,7 @@ boxlink {
     color: #000;
     /* animation-name: FadeIn; */
     /* animation-duration: 2s; */
-    width: 90%;
+    width: 100%;
 }
 
 boxlink:hover {
