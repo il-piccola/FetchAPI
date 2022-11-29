@@ -47,17 +47,9 @@
         </form>
         {% if num and sentence %}
         <div class="row container" style="min-width:100%;">
-            {% with ''|center:num as range %}
-            {% for _ in range %}
-            {% if forloop.counter0|divisibleby:"4" or forloop.first %}
-                <div class="row" style="margin:10px 0">
-            {% endif %}
-                    <div class="col d-flex align-items-center justify-content-center" id="img{{ forloop.counter0 }}"></div>
-            {% if forloop.counter|divisibleby:"4" or forloop.last %}
-                </div>
-            {% endif %}
-            {% endfor %}
-            {% endwith %}
+            <div class="row">
+                <div class="col d-flex align-items-center justify-content-center" style="margin:10px 0" id="img{{ forloop.counter0 }}"></div>
+            </div>
         </div>
         <script>
             showImage("{% url 'img' %}", {{ num }}, "{{ sentence }}");
