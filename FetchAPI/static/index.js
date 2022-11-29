@@ -20,7 +20,7 @@ function switchButton(disabled) {
     }
 }
 const showImage = async(url, n, sentence) => {
-    const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px;" role="status"><span class="visually-hidden">Loading...</span></div>';
+    const spinnerHTML = '<div class="spinner-border text-primary" style="width: 200px; height: 200px; margin: 50px 0 0 50px;" role="status"><span class="visually-hidden">Loading...</span></div>';
     switchButton(true);
     for (let i=0; i<n; i++) {
         let tag = '#img' + i;
