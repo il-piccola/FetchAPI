@@ -11,11 +11,7 @@
     </head>
     <body>
 	    <header id="Top">
-        {% comment %} {% if height %}
-        <div id="headerline" style="height:{{ height }}px;">
-        {% else %} {% endcomment %}
         <div id="headerline" class="container">
-        {% comment %} {% endif %} {% endcomment %}
         <div class="row"><h1>{{ title }}</h1></div>
         <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}

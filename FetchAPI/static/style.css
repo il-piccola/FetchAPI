@@ -42,8 +42,8 @@ header {
 
 /* ヘッダー枠線 */
 #headerline {
-	overflow-x: hidden;
-	overflow-y: auto;
+	/* overflow-x: hidden; */
+	/* overflow-y: auto; */
     margin: 50px 10px 3% 10px;
     min-width: 98%;
     min-height: 80vh;
