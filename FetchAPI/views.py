@@ -16,7 +16,7 @@ pipe = JapaneseStableDiffusionPipeline.from_pretrained(MODEL_ID, torch_dtype=tor
 @csrf_exempt
 def index(request) :
     params = {
-        'title' : 'FetchAPI Test',
+        'title' : 'Shiny AI Picture',
     }
     if request.POST :
         # request.session['sentence'] = request.POST['sentence']
